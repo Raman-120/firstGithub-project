@@ -1,0 +1,70 @@
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+
+        /* Criteria to meet
+        use switch
+        1. ADD, Subtract, Multiplication, Division, Exponential
+        2. keep running until user chooses to exit
+         */
+
+        Scanner scanner = new Scanner(System.in);
+
+        int user_choice = 1;
+        double num1;
+        double num2;
+        double result = 0;
+        char operator;
+
+        System.out.println("----Welcome to the Menu-Driven Calculator\n");
+
+
+        while (user_choice != 0) {
+            System.out.print(" \nPress 1 to continue and 0 to exit:  ");
+            user_choice = scanner.nextInt();
+                if(user_choice == 0) {
+                System.out.println("Thanks for using our Calculator.");
+                break;
+                }
+                if(user_choice != 1 && user_choice != 0){
+                    System.out.println("Invalid input. Please choose wither 1 or 0.");
+                    continue;
+                }
+
+            System.out.print("Enter the first number: ");
+            num1 = scanner.nextInt();
+
+            System.out.print("Choose an operator (eg: +, -, *, /): ");
+            operator = scanner.next().charAt(0);
+
+            System.out.print("Enter the second number: ");
+            num2 = scanner.nextInt();
+
+            switch (operator) {
+                case '+' -> result = num1 + num2;
+
+                case '-' -> result = num1 - num2;
+
+                case '*' -> result = num1 * num2;
+
+                case '/' ->{
+                    if(num2 == 0){
+                        System.out.println("0 can't be a divisor.");
+                        continue;
+                    }
+                    else{
+                        result = num1 / num2;
+                    }
+                }
+
+
+
+                default -> System.out.println("Invalid Operation");
+            }
+            System.out.println(result);
+            continue;
+        }
+        scanner.close();
+    }
+}
